@@ -164,35 +164,6 @@ body {
     flex: 1;
 }
 
-.sidebar-footer {
-    padding: 20px 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.btn-logout {
-    width: 100%;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.btn-logout:hover {
-    background: rgba(239, 68, 68, 0.2);
-    border-color: rgba(239, 68, 68, 0.4);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-}
 
 .sidebar-toggle {
     position: fixed;
@@ -223,7 +194,9 @@ body {
 
 .main-content {
     transition: margin-left 0.3s ease;
-    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .main-content.sidebar-open {
@@ -232,6 +205,81 @@ body {
 
 .main-content.sidebar-closed {
     margin-left: 0;
+}
+
+.top-header {
+    background: white;
+    padding: 16px 32px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 8px;
+}
+
+.user-name-header {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.user-role-header {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: capitalize;
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    background: #0473EA;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.logout-btn:hover {
+    background: #0a5bb8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(4, 115, 234, 0.3);
+}
+
+.content-wrapper {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+    background: #f9fafb;
 }
 
 .card {

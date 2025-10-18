@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import ApproveRejectSubscription from "../ApproveReject/ApproveRejectSubscription";
 import DomainManagement from "../DomainManagement/DomainManagement";
 import './Dashboard.css';
-import AuditLogs from "../AuditLog/AuditLogs"
+import AuditLogs from "../AuditLog/AuditLogs";
+import { LogOut } from 'lucide-react'
 
 
-export default function Dashboard() {
+export default function Dashboard({ navigate }) {
     const [view, setView] = useState('dashboard');
     const [open, setOpen] = useState(true);
+
+    const logout = () => {
+        navigate('landing'); // Redirect to landing page
+    };
 
 
     const stats = [
@@ -122,8 +127,10 @@ export default function Dashboard() {
                     <button onClick={() => setOpen(!open)} className="menu">☰</button>
                     <div className="actions">
                         <div className="notif"> <span className="dot"></span></div>
-                        <span> </span>
-
+                        <button onClick={logout} className="logout-btn">
+                            <LogOut style={{ width: 16, height: 16 }} />
+                            Logout
+                        </button>
                     </div>
                 </div>
                 <div className="content">{renderContent()}</div>
@@ -132,5 +139,3 @@ export default function Dashboard() {
         </div>
     );
 }
-
-

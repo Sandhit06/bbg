@@ -5,11 +5,16 @@ import SubscriptionRequestComponent from '../SubscriptionRequestComponent/Subscr
 import DownloadReportComponent from '../DownloadReport/DownloadReportComponent';
 import './SubscriberDashboard.css';
 import SubscriptionDashboard from '../SubscriptionStatusPage/SubsciptionDashboard';
+import { LogOut } from 'lucide-react';
 
-const SubscriberDashboard = () => {
+const SubscriberDashboard = ({ navigate: navigateToPage }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [sidebarOpen, setSidebarOpen] = useState(true);
+
+    const logout = () => {
+        navigateToPage('landing'); // Redirect to landing page
+    };
 
     // Determine active tab from URL
     const getActiveTab = () => {
@@ -163,37 +168,47 @@ const SubscriberDashboard = () => {
                         </button>
                     ))}
                 </nav>
-
-                <div className="sidebar-footer">
-                    <button className="btn-logout" onClick={() => console.log('Logout')}>
-                        <i className="bi bi-box-arrow-right"></i>
-                        <span>Logout</span>
-                    </button>
-                </div>
             </div>
 
             <div className={`main-content ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
-                <Routes>
-                    {/* Render at /dashboard */}
-                    <Route path="/dashboard" element={<DashboardHome />} />
-                    {/* Render at /dashboard/home */}
-                    <Route path="/dashboard/home" element={<DashboardHome />} />
+                <div className="top-header">
+                    <div className="header-left">
+                        <h3 className="header-title">Subscriber Dashboard</h3>
+                    </div>
+                    <div className="header-right">
+                        <div className="user-info">
+                            <span className="user-name-header">{user.name}</span>
+                            <span className="user-role-header">{user.role}</span>
+                        </div>
+                        <button className="logout-btn" onClick={logout}>
+                            <LogOut style={{ width: 16, height: 16 }} />
+                            Logout
+                        </button>
+                    </div>
+                </div>
+                <div className="content-wrapper">
+                    <Routes>
+                        {/* Render at /dashboard */}
+                        <Route path="/dashboard" element={<DashboardHome />} />
+                        {/* Render at /dashboard/home */}
+                        <Route path="/dashboard/home" element={<DashboardHome />} />
 
-                    <Route
-                        path="/dashboard/subscriptions"
-                        element={<SubscriptionDashboard subscriptions={subscriptions} />}
-                    />
+                        <Route
+                            path="/dashboard/subscriptions"
+                            element={<SubscriptionDashboard subscriptions={subscriptions} />}
+                        />
 
-                    {/* Add other absolute routes under /dashboard/... */}
-                    <Route
-                        path="/dashboard/request"
-                        element={<SubscriptionRequestComponent subscriptions={subscriptions} />}
-                    />
-                    <Route
-                        path="/dashboard/downloads"
-                        element={<DownloadReportComponent reports={reports} subscriptions={subscriptions} />}
-                    />
-                </Routes>
+                        {/* Add other absolute routes under /dashboard/... */}
+                        <Route
+                            path="/dashboard/request"
+                            element={<SubscriptionRequestComponent subscriptions={subscriptions} />}
+                        />
+                        <Route
+                            path="/dashboard/downloads"
+                            element={<DownloadReportComponent reports={reports} subscriptions={subscriptions} />}
+                        />
+                    </Routes>
+                </div>
             </div>
         </>
     );
