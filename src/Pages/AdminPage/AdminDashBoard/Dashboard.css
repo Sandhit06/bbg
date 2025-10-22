@@ -383,3 +383,28 @@ th:last-child {
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(4, 115, 234, 0.3);
 }
+
+/* Make the first column (checkbox) identical in header and rows */
+.pub-table th.col-select,
+.pub-table td.col-select {
+    width: 36px !important;
+    min-width: 36px !important;
+    padding: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* Center the checkbox both horizontally and vertically */
+.chk-center {
+    display: grid;
+    place-items: center;
+    /* centers content both axes */
+    height: 100%;
+    min-height: 44px;
+    /* matches your row height so header aligns with rows */
+}
+
+.pub-table th.col-select input,
+.pub-table td.col-select input {
+    margin: 0;
+    /* remove any default offset */
+}
