@@ -610,11 +610,10 @@ td.col-no {
 /* Report column — flexible, wraps long names */
 th.col-report,
 td.col-report {
-    min-width: 180px;
-    /* smaller width */
-    max-width: 250px;
-    /* optional cap to prevent overflow */
+    min-width: 220px;
+    max-width: 320px;
 }
+
 
 
 .report-cell {
@@ -666,9 +665,14 @@ td.col-date {
 
 th.col-actions,
 td.col-actions {
-    width: 120px;
-    min-width: 120px;
+    width: 100px;
+    min-width: 100px;
+    padding-left: 4px;
+    /* new: pulls it closer to Date */
+    padding-right: 4px;
+    /* keeps spacing even */
 }
+
 
 /* Horizontal scroll for small screens */
 .pub-wrap {

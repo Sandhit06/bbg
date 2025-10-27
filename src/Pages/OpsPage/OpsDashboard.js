@@ -657,7 +657,6 @@ const OpsDashboard = ({ navigate }) => {
                                                 <th className="col-type">Type</th>
                                                 <th className="col-date">Date</th>
                                                 <th className="col-actions">Actions</th>
-                                                <th className="col-downloads">Downloads</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -675,7 +674,8 @@ const OpsDashboard = ({ navigate }) => {
                                                     </td>
 
                                                     <td className="col-no">{(page - 1) * PAGE_SIZE + idx + 1}</td>
-                                                    <td className="report-cell col-report" style={{ width: '28%', paddingRight: 6 }}>
+                                                    <td className="report-cell col-report" style={{ width: '38%', paddingRight: 6 }}>
+
                                                         <span className="type-icon">{iconForType(r.type)}</span>
                                                         <span className="report-name">{r.name}</span>
                                                     </td>
@@ -694,7 +694,7 @@ const OpsDashboard = ({ navigate }) => {
                                                             <Download size={14} /> Import
                                                         </button>
                                                     </td>
-                                                    <td className="muted-td col-downloads">{r.downloads}</td>
+
                                                 </tr>
                                             ))}
                                             {pagedReports.length === 0 && (
